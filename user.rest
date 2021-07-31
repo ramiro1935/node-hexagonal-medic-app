@@ -1,0 +1,17 @@
+###
+
+POST http://localhost:3000/users/
+Content-Type: application/json
+
+{
+    "name": "Andrea",
+    "email": "correo03@correo.com",
+    "password": "123",
+    "photo": "andrea.jpg",
+    "roles": [
+        1,
+        2
+    ]
+}
+
+###

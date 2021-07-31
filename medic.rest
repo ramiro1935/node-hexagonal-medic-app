@@ -1,0 +1,42 @@
+###
+
+POST http://localhost:3000/medics/
+Content-Type: application/json
+
+{
+    "id": 223,
+    "name": "Andrea",
+    "lastname": "perez",
+    "identifier": "23424asd"
+    
+}
+
+###
+
+PUT http://localhost:3000/medics/1
+Content-Type: application/json
+
+{
+    "id": 223,
+    "name": "Andrea",
+    "lastname": "perez",
+    "identifier": "23424asd"
+}
+
+###
+
+GET http://localhost:3000/medics/
+
+###
+
+GET http://localhost:3000/medics/23ds
+
+###
+
+DELETE  http://localhost:3000/medics/23
+
+###
+
+GET http://localhost:3000/medics/page/32
+
+###
