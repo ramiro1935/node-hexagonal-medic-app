@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Car } from './Car';
 
 @Entity()
@@ -11,9 +11,9 @@ export class User {
     lastName: string
     @Column()
     gender: number
-/*    @OneToOne(type => Car)
-    car: Car*/
-
-    @OneToMany(type => Car, car => car.user, { cascade: true })
+    
+    /*@OneToOne(type => Car)*/
+    /*@OneToMany(type => Car, car => car.user, { cascade: true })*/
+    @ManyToMany(type => Car, car => car.users, { cascade: true })
     cars: Car[]
 }
