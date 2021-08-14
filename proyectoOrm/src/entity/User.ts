@@ -11,7 +11,9 @@ export class User {
     lastName: string
     @Column()
     gender: number
-    
+    @Column()
+    age: number
+
     /*@OneToOne(type => Car)*/
     /*@OneToMany(type => Car, car => car.user, { cascade: true })*/
     @ManyToMany(type => Car, car => car.users, { cascade: true })
