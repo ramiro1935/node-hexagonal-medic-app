@@ -1,44 +1,58 @@
-import { createConnection, getConnection, getRepository } from 'typeorm'
+import {
+  Brackets,
+  createConnection,
+  getConnection,
+  getRepository,
+} from 'typeorm'
 import { Car } from './entity/Car'
 import { User } from './entity/User'
 
 createConnection()
   .then(async connection => {
-    /* getRepository(User)
-    const users = getRepository(User)
-      .createQueryBuilder('usuario')
-      .where('usuario.id = :id', { id: 1 })
-      //.getOne()
-      .getSql()
+    const user = await getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.id = :id', { id: 1 })
+      .getOne()
 
-    const obj = getConnection()
-      .createQueryBuilder()
-      .select(['usuario.firstName', 'usuario.lastName'])
-      .from(User, 'usuario')
-      .where("usuario.id = :id", { id: 1})
+    const userParameters = await getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.id =:id')
+      .setParameters({ id: 1 })
+      .getOne()
+    console.log({ userParameters })
+
+    const userAge = await getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.age > :min && user.age < :max', { min: 20, max: 26 })
+      .getMany()
+    console.log({ userAge })
+
+    const userInAge = await getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.age IN(:...ages)', { ages: [26] })
+      .getMany()
+    console.log({ userInAge })
+
+    const userORWhere = await getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.age > :min', { min: 20 })
+      .orWhere('user.firstName = :name', { name: 'Denis' })
+      .getMany()
+    console.log({ userORWhere })
+
+    const userBrackets = getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.id > :id', { id: 1 })
+      .andWhere(
+        new Brackets(qb => {
+          qb.where('user.firstName = :firstName', {
+            firstName: 'Denis',
+          }).orWhere('user.age > :age', {age: 20})
+        })
+      )
       
-      const userOne = await obj.getOne()
-      const userOneSQL = await obj.getSql()
-    console.log({ userOne }, {userOneSQL})*/
+    console.log(await userBrackets.execute())
+    console.log(userBrackets.getSql())
 
-    const update = await getRepository(User)
-      .createQueryBuilder()
-      .update(User)
-      .set({ firstName: 'Denis', lastName: 'Miranda' })
-      .where({ id: 1 })
-      .execute()
-    console.log({ update })
-    const users = await getRepository(User).find()
-    console.log({ users })
-
-    /*const userDeleted = await getRepository(User)
-      .createQueryBuilder()
-      .delete()
-      .from(User)
-      .where({ id: 2 })
-      .execute()
-    console.log({ userDeleted })
-    const usersAtEnd = await getRepository(User).find()
-    console.log({ usersAtEnd })*/
   })
   .catch(console.log)
