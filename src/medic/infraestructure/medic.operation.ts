@@ -9,4 +9,11 @@ const env = yenv()
 
 export class MedicOperation extends OperationRepository<MedicEntity> implements MedicRepository {
 
+    constructor(){
+        super(MedicEntity)
+    }
+    report(): Promise<MedicEntity[]> {
+        throw new Error('Method not implemented.')
+    }
+
 }

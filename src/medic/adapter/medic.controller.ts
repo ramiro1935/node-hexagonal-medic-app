@@ -5,6 +5,7 @@ import { MedicResponseDto } from '../application/medic.dto'
 import { MedicRepository } from '../application/medic.repository'
 import { MedicUseCase } from '../application/medic.usecase'
 import { MedicOperation } from '../infraestructure/medic.operation'
+import { MedicEntity } from '../../entities/medic.entities'
 
 const medicOperation: MedicRepository = new MedicOperation()
 const medicUseCase = new MedicUseCase(medicOperation)

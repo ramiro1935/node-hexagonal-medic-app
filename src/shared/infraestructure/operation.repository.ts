@@ -10,9 +10,7 @@ export abstract class OperationRepository<T> {
     constructor(entity: ObjectType<T>){
         this.entity = entity
     }*/
-  constructor(private entity: ObjectType<T>) {
-    this.entity = entity
-  }
+  constructor(private entity: ObjectType<T>) {}
 
   async getOne(id: number): Promise<T> {
     const repository: Repository<T> = getRepository(this.entity)
