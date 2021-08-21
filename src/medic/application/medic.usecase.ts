@@ -65,8 +65,11 @@ export class MedicUseCase {
     medic: Omit<MedicModel, 'id'>
   ): Promise<Result<MedicResponseDto>> {
     const traceId = generateTrace();
+    console.log("entro antes del result")
     const result: MedicModel = await this.operation.insert(medic);
+    console.log("entro despues del result")
 
+    console.log({result})
     return ResponseDto.format<MedicResponseDto>(
       traceId,
       mappingMedicDto(result),

@@ -7,7 +7,7 @@ Content-Type: application/json
     "id": 223,
     "name": "Andrea",
     "lastname": "perez",
-    "identifier": "23424asd"
+    "identifier": "123"
     
 }
 
@@ -17,10 +17,7 @@ PUT http://localhost:3000/medics/1
 Content-Type: application/json
 
 {
-    "id": 223,
-    "name": "Andrea",
-    "lastname": "perez",
-    "identifier": "23424asd"
+    "name": "Leonor"
 }
 
 ###
@@ -29,14 +26,14 @@ GET http://localhost:3000/medics/
 
 ###
 
-GET http://localhost:3000/medics/23ds
+GET http://localhost:3000/medics/1
 
 ###
 
-DELETE  http://localhost:3000/medics/23
+DELETE  http://localhost:3000/medics/2
 
 ###
 
-GET http://localhost:3000/medics/page/32
+GET http://localhost:3000/medics/page/0
 
 ###
